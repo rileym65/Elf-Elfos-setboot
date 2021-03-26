@@ -13,7 +13,8 @@ scall:     equ     r4
 sret:      equ     r5
 
            org     8000h
-           db      'SETBOOT',0
+           lbr     0ff00h
+           db      'setboot',0
            dw      9000h
            dw      endrom+6000h
            dw      3000h
@@ -25,6 +26,7 @@ sret:      equ     r5
            br      start
 
 include    date.inc
+include    build.inc
 
 start:     ldi     0                   ; load sector 0
            plo     r7
